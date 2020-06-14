@@ -17,10 +17,6 @@ def detail(request, blog_id):
     blog_detail = get_object_or_404(Blog, pk = blog_id)
     return render(request, 'detail.html', {'blog':blog_detail})
 
-def read(request):
-    blogs = Blog.objects.all()
-    return render(request, 'Home.html', {'blogs':blogs})
-
 #새로운 데이터 저장=POST
 #글쓰기 페이지 띄워줌=GET
 def create(request):
@@ -39,12 +35,13 @@ def create(request):
 def update(request, pk):
     blog = get_object_or_404(Blog, pk = pk)
 
-    form = NewBlog(request.POST, instance=blog)
+    form = NewBlog(request.POST, request.FILES, instance=blog)
     if form.is_valid():
         form.save()
         return redirect('home')
-    
-    return render(request, 'create.html', {'form':form})
+    else:
+        form = NewBlog(instance=blog)
+    return render(request, 'update.html', {'form':form})
 
 def delete(request, pk):
     blog = get_object_or_404(Blog, pk = pk)

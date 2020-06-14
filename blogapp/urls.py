@@ -5,7 +5,5 @@ from django.conf.urls.static import static
 
 
 urlpatterns = [
-    path('read/', views.read, name="home"),
-    path('update/<int:pk>', views.update, name="update"),
-    path('delete/<int:pk>', views.delete, name="delete"),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

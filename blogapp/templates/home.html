@@ -53,7 +53,9 @@
                 {% if blog.photo %}
                 <img src="{{blog.photo.url}}" height=300 alt="">
                 {% endif %}
-                <p class="card-text">본문 미리보기 : {{blog.summary}}<a href="{%url 'detail' blog.id%}">...more</a></p>
+                <p class="card-text">본문 미리보기 : {{blog.summary}}<a href="{% url 'detail' blog.id %}">...more</a></p>
+                <a href = "{% url 'update' blog.id %}">수정</a>
+                <a href = "{% url 'delete' blog.id %}">삭제</a>
                 <br>
               </div>
             </div>
