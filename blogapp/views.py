@@ -27,7 +27,6 @@ def create(request):
             post.pub_date = timezone.now()
             post.save()
         return redirect('home')
-        # return redirect('/blog/'+str(blog.id))
     else:
         form = NewBlog()
         return render(request, 'create.html', {'form':form})
@@ -41,7 +40,7 @@ def update(request, pk):
         return redirect('home')
     else:
         form = NewBlog(instance=blog)
-    return render(request, 'update.html', {'form':form})
+        return render(request, 'create.html', {'form':form})
 
 def delete(request, pk):
     blog = get_object_or_404(Blog, pk = pk)

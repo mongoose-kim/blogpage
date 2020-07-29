@@ -1,14 +1,15 @@
+{% extends 'home.html' %}
 
-<form action="{% url 'create' %}" method="POST" enctype="multipart/form-data">
+{% block contents %}
+
+<form method="POST" enctype="multipart/form-data">
 
     {% csrf_token %}
-    Title : <input type="text" class="form-control" name="title">
-    <br><br>
-    <input type="file" name = "photo">
-    {{blog.pub_date}}
-    <br><br>
-    Body : <textarea class="form-control" row=5 name="body">{{blog.body}}</textarea>
-    <br><br>
-    <input class="btn btn-dark" type="submit" value="확인">
+    <table>
+        {{form.as_p}}
+    </table>
+    <input class="btn btn-dark" type="submit" value="제출">
 
 </form>
+
+{% endblock %}
